@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cole Air Inc. | Lake Charles HVAC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --primary:#3c4ba6;
+  --primary-light:#4989f5;
+  --accent:#68ccd1;
+  --dark:#1a1a2e;
+  --darker:#12122a;
+  --text:#f0f0f0;
+  --text-muted:#a0aec0;
+  --card-bg:rgba(255,255,255,0.05);
+  --card-border:rgba(255,255,255,0.08);
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--dark);color:var(--text);overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;width:100%;z-index:100;padding:1rem 2rem;display:flex;align-items:center;justify-content:space-between;backdrop-filter:blur(20px);background:rgba(26,26,46,0.85);border-bottom:1px solid var(--card-border);transition:all .3s}
+nav img{height:50px;border-radius:8px}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-cta{background:var(--accent);color:var(--dark);padding:.6rem 1.5rem;border-radius:50px;font-weight:700;font-size:.85rem;text-decoration:none;transition:all .3s}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(104,204,209,0.3)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 4rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 30% 40%,rgba(60,75,166,0.15) 0%,transparent 50%),radial-gradient(circle at 70% 60%,rgba(104,204,209,0.1) 0%,transparent 50%);animation:float 20s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(-2%,2%)}}
+.hero-content{position:relative;z-index:1;max-width:800px}
+.hero-badge{display:inline-block;background:rgba(104,204,209,0.1);border:1px solid rgba(104,204,209,0.3);padding:.4rem 1.2rem;border-radius:50px;font-size:.8rem;color:var(--accent);font-weight:600;margin-bottom:1.5rem;letter-spacing:.05em}
+.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;line-height:1.1;margin-bottom:1.5rem;background:linear-gradient(135deg,#fff 0%,var(--accent) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:1.2rem;color:var(--text-muted);max-width:600px;margin:0 auto 2.5rem;line-height:1.7}
+.hero-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:var(--dark);padding:.9rem 2.5rem;border-radius:50px;font-weight:700;font-size:1rem;text-decoration:none;transition:all .3s;border:none;cursor:pointer}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(104,204,209,0.35)}
+.btn-secondary{background:transparent;color:var(--text);padding:.9rem 2.5rem;border-radius:50px;font-weight:600;font-size:1rem;text-decoration:none;border:1px solid var(--card-border);transition:all .3s}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+
+/* STATS */
+.stats{display:flex;justify-content:center;gap:4rem;padding:3rem 2rem;flex-wrap:wrap}
+.stat{text-align:center}
+.stat-number{font-size:2.5rem;font-weight:800;color:var(--accent)}
+.stat-label{font-size:.85rem;color:var(--text-muted);margin-top:.3rem}
+
+/* SECTIONS */
+section{padding:6rem 2rem}
+.section-header{text-align:center;max-width:600px;margin:0 auto 4rem}
+.section-header h2{font-size:2.2rem;font-weight:700;margin-bottom:1rem}
+.section-header p{color:var(--text-muted);line-height:1.7}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;max-width:1200px;margin:0 auto}
+.service-card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:2rem;transition:all .3s;position:relative;overflow:hidden}
+.service-card:hover{transform:translateY(-5px);border-color:var(--accent);box-shadow:0 20px 40px rgba(0,0,0,0.2)}
+.service-icon{font-size:2.5rem;margin-bottom:1rem}
+.service-card h3{font-size:1.2rem;font-weight:700;margin-bottom:.8rem}
+.service-card p{color:var(--text-muted);font-size:.9rem;line-height:1.6}
+
+/* WHY US */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem;max-width:1100px;margin:0 auto}
+.why-card{text-align:center;padding:2rem}
+.why-icon{font-size:2rem;margin-bottom:1rem}
+.why-card h3{font-size:1.1rem;font-weight:700;margin-bottom:.5rem}
+.why-card p{color:var(--text-muted);font-size:.85rem;line-height:1.6}
+
+/* TESTIMONIALS */
+.testimonials{background:var(--darker)}
+.testimonial-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;max-width:1100px;margin:0 auto}
+.testimonial{background:var(--card-bg);border:1px solid var(--card-border);border-radius:16px;padding:2rem}
+.testimonial .stars{color:#fbbf24;margin-bottom:1rem;font-size:1.1rem}
+.testimonial p{color:var(--text-muted);font-style:italic;line-height:1.7;margin-bottom:1rem}
+.testimonial .name{font-weight:600;font-size:.9rem;color:var(--accent)}
+
+/* CTA */
+.cta-section{text-align:center;padding:6rem 2rem;position:relative}
+.cta-section h2{font-size:2.5rem;font-weight:800;margin-bottom:1rem}
+.cta-section p{color:var(--text-muted);margin-bottom:2rem;font-size:1.1rem}
+.cta-phone{font-size:2rem;font-weight:800;color:var(--accent);text-decoration:none;display:inline-block;margin-top:1rem}
+.cta-phone:hover{text-shadow:0 0 20px rgba(104,204,209,0.5)}
+
+/* FOOTER */
+footer{background:var(--darker);padding:3rem 2rem;text-align:center;border-top:1px solid var(--card-border)}
+footer img{height:40px;border-radius:6px;margin-bottom:1rem}
+.footer-links{display:flex;gap:2rem;justify-content:center;margin-bottom:1.5rem;flex-wrap:wrap}
+.footer-links a{color:var(--text-muted);text-decoration:none;font-size:.85rem;transition:color .2s}
+.footer-links a:hover{color:var(--accent)}
+.footer-copy{color:#555;font-size:.8rem}
+.footer-areas{color:var(--text-muted);font-size:.8rem;margin-bottom:1rem}
+
+/* MOBILE */
+@media(max-width:768px){
+  .nav-links{display:none}
+  .stats{gap:2rem}
+  .hero h1{font-size:2.2rem}
+  .services-grid,.testimonial-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <img src="https://lirp.cdn-website.com/8b5d2356/dms3rep/multi/opt/logo-368w.jpg" alt="Cole Air Inc.">
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#why">Why Us</a>
+    <a href="#reviews">Reviews</a>
+    <a href="tel:337-855-6628" class="nav-cta">📞 337-855-6628</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">SERVING LAKE CHARLES SINCE 1985</div>
+    <h1>If It Heats or Cools, We Fix It.</h1>
+    <p>Expert HVAC service for your home and business. Honest work, fair prices, and 40 years of keeping Southwest Louisiana comfortable.</p>
+    <div class="hero-buttons">
+      <a href="tel:337-855-6628" class="btn-primary">Get a Free Quote</a>
+      <a href="#services" class="btn-secondary">Our Services</a>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="stat"><div class="stat-number">40+</div><div class="stat-label">Years in Business</div></div>
+  <div class="stat"><div class="stat-number">10K+</div><div class="stat-label">Jobs Completed</div></div>
+  <div class="stat"><div class="stat-number">24/7</div><div class="stat-label">Emergency Service</div></div>
+  <div class="stat"><div class="stat-number">A+</div><div class="stat-label">BBB Rating</div></div>
+</div>
+
+<section id="services">
+  <div class="section-header">
+    <h2>What We Do</h2>
+    <p>Full-service HVAC solutions for residential and commercial systems. All makes, all models.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">❄️</div>
+      <h3>AC Repair & Installation</h3>
+      <p>Fast, effective air conditioning repair and high-efficiency system installs from top brands like Daikin.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔥</div>
+      <h3>Heating Services</h3>
+      <p>Furnace and heat pump diagnostics, repair, and installation to keep you warm through winter.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔍</div>
+      <h3>Diagnostics & Testing</h3>
+      <p>Advanced diagnostic tools and whole-home performance testing to catch problems before they get expensive.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏢</div>
+      <h3>Commercial Refrigeration</h3>
+      <p>Refrigeration repair, evaluation, and maintenance for restaurants, stores, and commercial facilities.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛡️</div>
+      <h3>Maintenance Plans</h3>
+      <p>Custom preventative maintenance to extend system life and prevent costly breakdowns year-round.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🏠</div>
+      <h3>Building Performance</h3>
+      <p>Energy efficiency audits and code compliance testing to optimize your home or business.</p>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="section-header">
+    <h2>Why Cole Air?</h2>
+    <p>Four decades of trust, expertise, and doing right by our customers.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">🏆</div>
+      <h3>40+ Years Experience</h3>
+      <p>Certified technicians with decades of hands-on knowledge across every system type.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">⚡</div>
+      <h3>Emergency Service</h3>
+      <p>When your AC dies at midnight in July, we answer. Fast response when you need it most.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🤝</div>
+      <h3>Honest & Transparent</h3>
+      <p>We never push unnecessary repairs. We tell you what you need — nothing more, nothing less.</p>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">💡</div>
+      <h3>Innovative Solutions</h3>
+      <p>Latest high-efficiency tech and smart diagnostics to save you money long-term.</p>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="reviews">
+  <div class="section-header">
+    <h2>What Our Customers Say</h2>
+    <p>Real reviews from real people we've helped stay comfortable.</p>
+  </div>
+  <div class="testimonial-grid">
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <p>"Cole Air came out same day when our AC went out in August. Fixed it fast and the price was fair. Can't ask for more than that."</p>
+      <div class="name">— Lake Charles Homeowner</div>
+    </div>
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <p>"Been using them for years. Honest people who do quality work. They've never tried to sell me something I didn't need."</p>
+      <div class="name">— Moss Bluff Resident</div>
+    </div>
+    <div class="testimonial">
+      <div class="stars">★★★★★</div>
+      <p>"Professional from start to finish. Installed a new Daikin system and our energy bills dropped immediately. Highly recommend."</p>
+      <div class="name">— Sulphur Business Owner</div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <h2>Ready to Get Comfortable?</h2>
+  <p>Whether it's a repair, a new system, or just a question — we're here for you.</p>
+  <div class="hero-buttons">
+    <a href="tel:337-855-6628" class="btn-primary">Schedule Service</a>
+    <a href="mailto:info@coleair.net" class="btn-secondary">Email Us</a>
+  </div>
+  <a href="tel:337-855-6628" class="cta-phone">337-855-6628</a>
+</section>
+
+<footer>
+  <img src="https://lirp.cdn-website.com/8b5d2356/dms3rep/multi/opt/logo-368w.jpg" alt="Cole Air Inc.">
+  <div class="footer-areas">Serving Lake Charles • Sulphur • Moss Bluff • Westlake • DeQuincy • Hackberry • Iowa • Ragley • DeRidder</div>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#why">About</a>
+    <a href="#reviews">Reviews</a>
+    <a href="tel:337-855-6628">Contact</a>
+  </div>
+  <div class="footer-copy">© 2026 Cole Air, Inc. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
